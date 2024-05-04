@@ -130,3 +130,36 @@ const user: IUser = {
     email: "emma@example.com",
     age: 21
 }
+
+//GENERICS
+interface IAuthor{
+    id: number,
+    username: String
+}
+
+interface ICategory{
+    id:number,
+    title:string
+}
+
+interface IPost{
+    id: number,
+    title: string,
+    desc: string,
+    extra: IAuthor[] | ICategory[]
+}
+//This method of creating new and adding it is not very sustainable as we do not even know what we will need in future, so we use Generics
+
+interface IPostBetter<T>{
+    id:number,
+    title: string,
+    desc: string,
+    extra: T[]
+}
+
+const testMe : IPostBetter<String> ={
+    id: 1,
+    title: "This is the Post Title",
+    desc: "This is the Post Description",
+    extra: ["str", "str1", "str2"]
+}
